@@ -1,14 +1,16 @@
 from flask import Flask, render_template
-
+from flask import request
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return 'this is my homepage!'
+@app.route('/hello/<name>')
+def index(name):
+    return "Hello " + name
 
-@app.route('/ej')
-def index2():
-    return render_template('introduce.html')
+@app.route('/profile')
+def profile():
+    address = request.args.get('address')
+    return render_template('introduce.html',
+                           address = address)
 
 if __name__ == '__main__':
     app.run()
