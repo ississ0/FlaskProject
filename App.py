@@ -8,9 +8,9 @@ def index(name):
 
 @app.route('/profile')
 def profile():
-    address = request.args.get('address')
+    myName = request.args.get('name')
     return render_template('introduce.html',
-                           address = address)
+                           myNameInHtml= myName)
 
 if __name__ == '__main__':
     app.run()
